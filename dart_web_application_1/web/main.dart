@@ -12,12 +12,9 @@ Iterable<String> thingsTodo() sync* {
     }
   }
 }
-
-
-
 web.HTMLLIElement newLI(String itemText) =>
   (web.document.createElement('li') as web.HTMLLIElement)..text = itemText;
- 
+
 
 void main() {
   var now = DateTime.now();
@@ -26,6 +23,7 @@ void main() {
       'and your Dart web app is running!';
 
   final output = web.document.querySelector('#output');
+
   for (final item in thingsTodo()) {
     output?.appendChild(newLI(item));
   }

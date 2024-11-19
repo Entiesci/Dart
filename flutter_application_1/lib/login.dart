@@ -57,7 +57,7 @@ class _SignUpFormState extends State<SignUpForm> {
         mainAxisSize: MainAxisSize.min,
         children: [
           AnimatedProgressIndicator(value: _formProgress),
-          Text('Sign up', style: Theme.of(context).textTheme.headlineMedium),
+          Text('More infomation', style: Theme.of(context).textTheme.headlineMedium),
           Padding(
             padding: const EdgeInsets.all(8),
             child: TextFormField(
@@ -76,7 +76,7 @@ class _SignUpFormState extends State<SignUpForm> {
             padding: const EdgeInsets.all(8),
             child: TextFormField(
               controller: _usernameTextController,
-              decoration: const InputDecoration(hintText: 'Username'),
+              decoration: const InputDecoration(hintText: 'Blog url'),
             ),
           ),
           TextButton(
@@ -93,7 +93,7 @@ class _SignUpFormState extends State<SignUpForm> {
               }),
             ),
             onPressed: null,
-            child: const Text('Sign up'),
+            child: const Text('Complete'),
           ),
         ],
       ),

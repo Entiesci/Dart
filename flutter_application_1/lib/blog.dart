@@ -19,9 +19,10 @@ class BlogPage extends StatelessWidget {
             SizedBox(width: 16), // 在按钮右侧留白
           ],
         ),
-        body: Row(
+
+        body:Stack(
           children: [
-              Container(
+            Container(
               width: double.infinity,
               height: double.infinity, // 设置为最大高度
               decoration: const BoxDecoration(
@@ -33,45 +34,61 @@ class BlogPage extends StatelessWidget {
                 ),
               ),
             ),
-            Expanded(
-              flex: 1, // 设置左侧栏的比例
-              child: Blogs(),
-            ),
-            Expanded(
-              flex: 2, // 设置右侧栏的比例
-              child: Container(
-                color: Colors.green,
-                child: Center(
-                  child: Text(
-                    '右侧栏',
-                    style: TextStyle(color: Colors.white, fontSize: 24),
-                  ),
+            Row(
+              children: [
+                Expanded(
+                  flex: 1, // 设置左侧栏的比例
+                  child: LeftRaw()
                 ),
-              ),
-            ),
+                Expanded(
+                  flex: 2, // 设置右侧栏的比例
+                  child: RightRaw()
+                ),
+              ],
+            
+          ),
           ],
-        
-      ),
+        )
     );
   }
 }
 
 
-class Blogs extends StatelessWidget{
-  const Blogs({super.key});
+class LeftRaw extends StatelessWidget{
+  const LeftRaw({super.key});
   @override
   Widget build(BuildContext context) {
     return Column(
-      children:[
+      children:const [
         Card(
+          child: SizedBox(
+            width: double.infinity,
+          child: Text('L')
 
+          )
         ),
+        
+
+      ]
+      
+    );
+  }
+}
+
+class RightRaw extends StatelessWidget{
+  const RightRaw({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children:const [
         Card(
+          child: SizedBox(
+            width: double.infinity,
+          child: Text('R')
 
+          )
         ),
-        Card(
-
-        ),
+        
 
       ]
       

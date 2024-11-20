@@ -25,6 +25,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
+            
             SizedBox(
               width: 400,
               child: Card(child: UserInfo()),

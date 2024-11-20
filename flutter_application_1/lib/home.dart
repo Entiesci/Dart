@@ -41,23 +41,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Flutter 顶栏示例',
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//       ),
-//       home: Scaffold(
 
-//         body: Center(
-//           child: Text('欢迎使用 Flutter!'),
-//         ),
-//       ),
-//     );
-//   }
-// }
 
 class UserInfo extends StatefulWidget {
   const UserInfo({super.key});
@@ -118,7 +102,8 @@ class _UserInfoState extends State<UserInfo> {
           Text('操作', style: Theme.of(context).textTheme.headlineSmall),
           Padding(
             padding: const EdgeInsets.all(50),
-            child: Column(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
                   style: ButtonStyle(
@@ -133,6 +118,21 @@ class _UserInfoState extends State<UserInfo> {
                     Navigator.pushNamed(context, '/');
                   },
                   child: const Text('Sign out'),
+                ),
+                SizedBox(width: 6,),
+                TextButton(
+                  style: ButtonStyle(
+                    foregroundColor: WidgetStateProperty.resolveWith((states) {
+                      return states.contains(WidgetState.disabled) ? null : Colors.white;
+                    }),
+                    backgroundColor: WidgetStateProperty.resolveWith((states) {
+                      return states.contains(WidgetState.disabled) ? null : Colors.blue;
+                    }),
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'blog');
+                  },
+                  child: const Text('Blog'),
                 ),
               ],
             ),

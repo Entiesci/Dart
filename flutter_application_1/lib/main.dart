@@ -36,8 +36,18 @@ class MyApp extends StatelessWidget {
         ),
         // 文本主题
         textTheme: const TextTheme(
-          displayLarge: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-          // 其他文本样式
+          
+          headlineMedium: TextStyle(
+            fontSize: 24, // 设置字体大小
+            fontWeight: FontWeight.bold, // 设置字体粗细
+            color: Colors.black, // 设置字体颜色
+            // 你还可以添加其他样式
+          ),
+          headlineSmall: TextStyle(
+            fontSize: 16, // 设置字体大小
+            color: Colors.black, // 设置字体颜色
+            // 你还可以添加其他样式
+          ),
         ),
       ),
 

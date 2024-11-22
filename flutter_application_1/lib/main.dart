@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       routes: {
-        'main': (context) => const HomePage(),
+        'account': (context) => const HomePage(),
         'login': (context) => const SignUpApp(),
         'blog': (context) => const BlogPage(),
         '/': (context) => const WelcomePage(),
@@ -111,42 +111,6 @@ class WelcomePage extends StatelessWidget {
   }
 }
 
-// class Menu extends StatelessWidget {
-//   const Menu({super.key});
-//   @override
-//   Widget build(BuildContext context) {
-//     return Form(
-//       child: Column(
-//         mainAxisSize: MainAxisSize.min,
-//         children: [
-//           TextButton(
-//             style: ButtonStyle(
-//               foregroundColor: WidgetStateProperty.resolveWith((states) {
-//                 return states.contains(WidgetState.disabled)
-//                     ? null
-//                     : Colors.white;
-//               }),
-//               backgroundColor: WidgetStateProperty.resolveWith((states) {
-//                 return states.contains(WidgetState.disabled)
-//                     ? null
-//                     : Colors.blue;
-//               }),
-//             ),
-//             onPressed: () {
-//               print("OK");
-//             },
-//             child: const Text(
-//               'Sign up',
-//               style: TextStyle(
-//                 color: Colors.white, // 将字体颜色设置为白色
-//               ),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
 
 class Menu extends StatefulWidget {
   const Menu({super.key});
@@ -169,7 +133,7 @@ class _LoginFormState extends State<Menu> {
             children: [
               TextButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, 'main');
+                  Navigator.pushNamed(context, 'blog');
                 },
                 child: const Text('Continue'),
               ),

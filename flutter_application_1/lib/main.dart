@@ -37,7 +37,6 @@ class MyApp extends StatelessWidget {
         ),
         // 文本主题
         textTheme: const TextTheme(
-          
           headlineMedium: TextStyle(
             fontSize: 24, // 设置字体大小
             fontWeight: FontWeight.bold, // 设置字体粗细
@@ -51,11 +50,10 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-
       routes: {
         'main': (context) => const HomePage(),
-        'login':(context)=>const SignUpApp(),
-        'blog':(context)=>const BlogPage(),
+        'login': (context) => const SignUpApp(),
+        'blog': (context) => const BlogPage(),
         '/': (context) => const WelcomePage(),
       },
     );
@@ -81,23 +79,27 @@ class WelcomePage extends StatelessWidget {
               ),
             ),
           ),
-          const Center(
-            
+          Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  // height: 400,
-                  width: 360,
-                  child: Card(
-                    child: LoginForm(),
+                  height: 120,
+                  child: Center(
+                    child: Text(
+                      "Erica N",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineLarge
+                          ?.copyWith(color: Colors.white), // 设置字体颜色为白色
+                    ),
                   ),
                 ),
                 SizedBox(
                   // height: 400,
                   width: 360,
                   child: Card(
-                    child: RegForm(),
+                    child: Menu(),
                   ),
                 ),
               ],
@@ -109,8 +111,8 @@ class WelcomePage extends StatelessWidget {
   }
 }
 
-// class LoginForm extends StatelessWidget {
-//   const LoginForm({super.key});
+// class Menu extends StatelessWidget {
+//   const Menu({super.key});
 //   @override
 //   Widget build(BuildContext context) {
 //     return Form(
@@ -146,120 +148,41 @@ class WelcomePage extends StatelessWidget {
 //   }
 // }
 
-class LoginForm extends StatefulWidget {
-  const LoginForm({super.key});
+class Menu extends StatefulWidget {
+  const Menu({super.key});
 
   @override
-  State<LoginForm> createState() => _LoginFormState();
+  State<Menu> createState() => _LoginFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
-  final _firstNameTextController = TextEditingController();
-  final _lastNameTextController = TextEditingController();
-
+class _LoginFormState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     return Form(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('Sign up', style: Theme.of(context).textTheme.headlineMedium),
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: TextFormField(
-              controller: _firstNameTextController,
-              decoration: const InputDecoration(hintText: 'Username'),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: TextFormField(
-              controller: _lastNameTextController,
-              decoration: const InputDecoration(hintText: 'Password'),
-            ),
-          ),
-          TextButton(
-            style: ButtonStyle(
-              foregroundColor: WidgetStateProperty.resolveWith((states) {
-                return states.contains(WidgetState.disabled)
-                    ? null
-                    : Colors.white;
-              }),
-              backgroundColor: WidgetStateProperty.resolveWith((states) {
-                return states.contains(WidgetState.disabled)
-                    ? null
-                    : Colors.blue;
-              }),
-            ),
-            onPressed: () {
-              Navigator.pushNamed(context, 'main');
-            },
-            child: const Text('Continue'),
-          ),
-          const SizedBox(height: 12), 
-        ],
-      ),
-    );
-  }
-}
-
-class RegForm extends StatefulWidget {
-  const RegForm({super.key});
-
-  @override
-  State<RegForm> createState() => _RegFormState();
-}
-
-class _RegFormState extends State<RegForm> {
-  final _firstNameTextController = TextEditingController();
-  final _lastNameTextController = TextEditingController();
-  final _usernameTextController = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text('Register', style: Theme.of(context).textTheme.headlineMedium),
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: TextFormField(
-              controller: _firstNameTextController,
-              decoration: const InputDecoration(hintText: 'Username'),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: TextFormField(
-              controller: _lastNameTextController,
-              decoration: const InputDecoration(hintText: 'Password'),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: TextFormField(
-              controller: _usernameTextController,
-              decoration: const InputDecoration(hintText: 'Email'),
-            ),
-          ),
-          TextButton(
-            style: ButtonStyle(
-              foregroundColor: WidgetStateProperty.resolveWith((states) {
-                return states.contains(WidgetState.disabled)
-                    ? null
-                    : Colors.white;
-              }),
-              backgroundColor: WidgetStateProperty.resolveWith((states) {
-                return states.contains(WidgetState.disabled)
-                    ? null
-                    : Colors.blue;
-              }),
-            ),
-            onPressed: () {Navigator.pushNamed(context, 'login');},
-            child: Text('Register'),
-          ),
-          const SizedBox(height: 12), 
+          const SizedBox(height: 12),
+          Center(
+              child: Row(
+            mainAxisAlignment: MainAxisAlignment.center, // 设置主轴对齐为居中
+            children: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, 'main');
+                },
+                child: const Text('Continue'),
+              ),
+              const SizedBox(width: 12), // 改为 width，使用水平间距
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, 'login');
+                },
+                child: const Text('Register'),
+              ),
+            ],
+          )),
+          const SizedBox(height: 12),
         ],
       ),
     );

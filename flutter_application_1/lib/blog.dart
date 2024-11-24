@@ -19,12 +19,12 @@ class BlogPage extends StatelessWidget {
           actions: [
             IconButton(
               icon: Icon(
-                Icons.note,
+                Icons.account_circle,
                 color: const Color.fromARGB(255, 248, 248, 248), // 设置图标颜色为黑色
               ),
               onPressed: () {
                 // 点击搜索按钮时的操作
-                print('搜索按钮被点击');
+                Navigator.pushNamed(context, 'account');
               },
             ),
             IconButton(
@@ -35,8 +35,8 @@ class BlogPage extends StatelessWidget {
               onPressed: () async {
                 const url = 'https://a.com'; // 你要跳转的链接
                 if (await canLaunchUrl(Uri.parse(url))) {
-  await launchUrl(Uri.parse(url)); // 使用 Uri.parse(url)
-}
+                  await launchUrl(Uri.parse(url)); // 使用 Uri.parse(url)
+                }
               },
             ),
             IconButton(
@@ -70,18 +70,15 @@ class BlogPage extends StatelessWidget {
               child: Row(
                 children: const [
                   Expanded(
-                    flex: 1,
+                    flex: 6,
                     child: SizedBox(),
                   ),
-                  Expanded(flex: 2, child: LeftRow()),
-                  // Expanded(
-                  //     flex: 1,
-                  //     child: SizedBox()),
+                  Expanded(flex: 12, child: LeftRow()),
                   Expanded(
-                      flex: 4, // 设置右侧栏的比例
+                      flex: 24, // 设置右侧栏的比例
                       child: RightRow()),
                   Expanded(
-                    flex: 1,
+                    flex: 6,
                     child: SizedBox(),
                   ),
                 ],
@@ -113,40 +110,44 @@ class LeftRow extends StatelessWidget {
                   SizedBox(
                     height: 12,
                   ),
-                  Container(
-                    height: 120,
-                    width: 800,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.5), // 半透明背景
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black26,
-                          blurRadius: 10.0,
-                          offset: Offset(0, 2),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Padding(
-                          padding:
-                              EdgeInsets.only(left: 16.0), // 设置左侧留白，16.0是留白的大小
-                          child: Text(
-                            titles[index],
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                            textAlign: TextAlign.left,
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 8.0), // 设置左右留白，16.0是留白的大小
+                    child: Container(
+                      width: double.infinity, // 使 Container 宽度占满可用空间
+                      height: 120,
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.5), // 半透明背景
+                        borderRadius: BorderRadius.circular(15),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black26,
+                            blurRadius: 10.0,
+                            offset: Offset(0, 2),
                           ),
-                        ),
-                        SizedBox(height: 10),
-                        Text(""),
-                      ],
+                        ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                                left: 16.0), // 设置左侧留白，16.0是留白的大小
+                            child: Text(
+                              titles[index],
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.left,
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Text(""),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -155,15 +156,6 @@ class LeftRow extends StatelessWidget {
           );
         }
       },
-
-      // Card(
-      //   // child: SizedBox(
-      //   //   width: double.infinity,
-      //   // child: Text('L')
-
-      //   // )
-
-      // ),
     );
   }
 }
@@ -197,35 +189,39 @@ class RightRow extends StatelessWidget {
                   SizedBox(
                     height: 12,
                   ),
-                  Container(
-                    height: 400,
-                    width: 900,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.5), // 半透明背景
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black26,
-                          blurRadius: 10.0,
-                          offset: Offset(0, 2),
-                        ),
-                      ],
-                    ),
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            '透明毛玻璃效果',
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(height: 10),
-                          Text(titles[index]),
-                        ],
-                      ),
-                    ),
-                  ),
+                  Padding(
+  padding: EdgeInsets.symmetric(horizontal: 8.0), // 设置左右留白，16.0是留白的大小
+  child: Container(
+    height: 400,
+    width: double.infinity, // 使 Container 宽度占满可用空间
+    decoration: BoxDecoration(
+      color: Colors.white.withOpacity(0.5), // 半透明背景
+      borderRadius: BorderRadius.circular(15),
+      boxShadow: const [
+        BoxShadow(
+          color: Colors.black26,
+          blurRadius: 10.0,
+          offset: Offset(0, 2),
+        ),
+      ],
+    ),
+    child: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            '透明毛玻璃效果',
+            style: TextStyle(
+                fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(height: 10),
+          Text(titles[index]),
+        ],
+      ),
+    ),
+  ),
+),
+
                 ],
               );
             },
